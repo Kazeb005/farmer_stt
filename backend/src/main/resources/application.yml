@@ -1,0 +1,23 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  datasource:
+    url: ${FARM_DB_URL:jdbc:postgresql://localhost:5432/farm_tracker}
+    username: ${FARM_DB_USER:farm_tracker}
+    password: ${FARM_DB_PASSWORD:farm_tracker}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+app:
+  jwt:
+    secret: ${FARM_JWT_SECRET:local-development-key-change-this-before-deploying-2026}
+    expiration-ms: ${FARM_JWT_EXPIRATION_MS:86400000}
+  cors:
+    allowed-origin: ${FARM_CORS_ORIGIN:http://localhost:5173}
